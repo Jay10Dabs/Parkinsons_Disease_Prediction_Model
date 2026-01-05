@@ -3,6 +3,7 @@
 # =============================================
 
 import streamlit as st
+import os
 import joblib
 import pandas as pd
 import numpy as np
@@ -90,7 +91,9 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # --- Load the model, scaler, and feature names ---
-model = joblib.load("parkinsons_voice_model.pkl")
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "parkinsons_voice_model.pkl")
+model = joblib.load(MODEL_PATH)
+# model = joblib.load("parkinsons_voice_model.pkl")
 scaler = joblib.load("voice_feature_scaler.pkl")
 feature_names = joblib.load("feature_names.pkl")
 
