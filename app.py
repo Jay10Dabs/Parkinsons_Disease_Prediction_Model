@@ -89,68 +89,6 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# ---------- Additional CSS for Streamlit Cloud compatibility ----------
-st.markdown("""
-    <style>
-    /* Fix for Streamlit Cloud - Force text colors */
-    .stMarkdown p, .stMarkdown li, .stMarkdown span {
-        color: #000000 !important;
-    }
-    
-    /* Fix feature card text */
-    .feature-card p, .feature-card li {
-        color: #000000 !important;
-    }
-    
-    /* Fix sidebar text visibility */
-    section[data-testid="stSidebar"] .stMarkdown p,
-    section[data-testid="stSidebar"] .stMarkdown span,
-    section[data-testid="stSidebar"] .stMarkdown li {
-        color: #ffffff !important;
-    }
-    
-    /* Fix radio button labels */
-    .stRadio label {
-        color: #000000 !important;
-    }
-    
-    section[data-testid="stSidebar"] .stRadio label {
-        color: #ffffff !important;
-    }
-    
-    /* Fix number input labels */
-    .stNumberInput label {
-        color: #000000 !important;
-    }
-    
-    /* Fix text in info/warning/success boxes */
-    .stAlert p, .stAlert li {
-        color: #000000 !important;
-    }
-    
-    /* Fix dataframe */
-    .stDataFrame {
-        color: #000000 !important;
-    }
-    
-    /* Fix caption */
-    .stCaptionContainer {
-        color: #666666 !important;
-    }
-    
-    /* Ensure expander content is visible */
-    .streamlit-expanderContent p,
-    .streamlit-expanderContent li {
-        color: #000000 !important;
-    }
-    
-    /* Fix table text */
-    table {
-        color: #000000 !important;
-    }
-    </style>
-""", unsafe_allow_html=True)
-
 # --- Load the model, scaler, and feature names ---
 model = joblib.load("parkinsons_voice_model.pkl")
 scaler = joblib.load("voice_feature_scaler.pkl")
@@ -354,6 +292,18 @@ if page == "🏠 Home":
     </div>
     """, unsafe_allow_html=True)
     
+    # Important Disclaimer
+    st.markdown("## ⚠️ Important Disclaimer")
+    st.error("""
+    **This tool is for educational and research purposes only.**
+    
+    - This is NOT a medical diagnostic tool
+    - Results should NOT replace professional medical consultation
+    - Always consult qualified healthcare professionals for diagnosis
+    - This tool is designed to support, not replace, clinical judgment
+    - False positives and false negatives are possible
+    """)
+    
     # Video Section
     st.markdown("## 🎥 Learn More About Parkinson's Disease")
     st.markdown("""
@@ -366,18 +316,6 @@ if page == "🏠 Home":
     # YouTube video embed
     video_url = "https://www.youtube.com/watch?v=u_tozEV7f4k"  
     st.video(video_url)
-    
-    # Important Disclaimer
-    st.markdown("## ⚠️ Important Disclaimer")
-    st.error("""
-    **This tool is for educational and research purposes only.**
-    
-    - This is NOT a medical diagnostic tool
-    - Results should NOT replace professional medical consultation
-    - Always consult qualified healthcare professionals for diagnosis
-    - This tool is designed to support, not replace, clinical judgment
-    - False positives and false negatives are possible
-    """)
     
     # Call to Action
     st.markdown("---")
