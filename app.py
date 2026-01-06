@@ -173,6 +173,17 @@ def show_animated_gauge(container, percent:int, color:str, label:str):
         container.plotly_chart(fig, use_container_width=True)
         time.sleep(0.01)
 
+# ---------- Footer Function ----------
+def show_footer():
+    """Display copyright footer on all pages"""
+    st.markdown("---")
+    st.markdown("""
+    <div style="text-align: center; padding: 1rem; color: #666;">
+        <p style="margin: 0.2rem;">© 2026 Parkinson's Disease Voice Screener</p>
+        <p style="margin: 0.2rem;">Developed by <strong>Joseph Dabuo</strong></p>
+    </div>
+    """, unsafe_allow_html=True)
+
 # --- Sidebar Navigation with session state ---
 st.sidebar.title("🧭 Navigation")
 
@@ -334,6 +345,9 @@ if page == "🏠 Home":
         if st.button("🔬 Go to Prediction Page", use_container_width=True):
             st.session_state.page = "🔬 Predict"
             st.rerun()
+    
+    # Footer
+    show_footer()
 
 # --- PREDICT PAGE ---
 elif page == "🔬 Predict":
@@ -556,6 +570,9 @@ elif page == "🔬 Predict":
             except Exception as e:
                 st.error(f"Error during prediction: {e}")
                 st.error("Please ensure all required features are provided correctly.")
+    
+    # Footer
+    show_footer()
 
 # --- EXPLAIN MODEL PAGE ---
 elif page == "📊 Explain Model":
@@ -586,6 +603,9 @@ elif page == "📊 Explain Model":
     - **Engineered features** like *mean_jitter*, *mean_shimmer*, and *HNR_to_NHR* are automatically 
       calculated from the base features to enhance model performance.
     """)
+    
+    # Footer
+    show_footer()
 
 # --- ABOUT PAGE ---
 elif page == "ℹ️ About":
@@ -640,3 +660,6 @@ elif page == "ℹ️ About":
     """)
     
     st.success("Thank you for exploring this project!")
+    
+    # Footer
+    show_footer()
